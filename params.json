@@ -1,6 +1,6 @@
 {
   "name": "Holmes search app",
   "tagline": "Browse the Web Easily ",
-  "body": "### Welcome to GitHub Pages.\r\nHolmes est une application permettant d'effectuer des recherches facilement. Vous pouvez télécharger facilement l'application en cliquant sur \".zip\" ",
+  "body": "### Welcome to GitHub Pages.\r\nHolmes est une application permettant d'effectuer des recherches facilement. Vous pouvez télécharger facilement l'application en cliquant sur \".zip\" \r\n\r\n### Une fois télécharger\r\n\r\n- décompressez le dossier\r\n- ouvrez le dossier\r\n- ouvrez \"index.html\"\r\n- faites de cette page votre page d'accueil",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
