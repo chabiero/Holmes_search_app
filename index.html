@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html onerror="rescue()" onabort="rescue()">
+	<head>
+		<title>Projet Delta</title>
+		<meta charset="utf-8">
+		<script>
+			function launchdelta(){
+	var script = document.createElement('script');
+	script.type = 'text/javascript';
+	script.src = 'script/hearth.js';
+    document.getElementsByTagName("head")[0].appendChild(script);
+    localStorage.setItem("key","1");
+    setTimeout('init()', 2700)
+ 			}
+		</script>
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+		<style>
+			body{
+				background-color: black;
+				font-family: Tahoma;
+				color: white;
+			}
+			#id_project{
+				position: absolute;
+				font-size: 30px;
+				height: 50px;
+				width: 50%;
+				text-align: center;
+				color: white;
+				left: 50%;
+				top: 50%;
+				margin-left: -25%;
+				margin-top: -25px;
+			}
+			#id_project:after{
+				content: "D E L T A"
+			}
+			#loader{
+				position: absolute;
+				font-size: 15px;
+				height: 50px;
+				width: 50%;
+				text-align: center;
+				color: white;
+				left: 50%;
+				bottom:0;
+				margin-left: -25%;
+				margin-bottom: 10px;
+				visibility: hidden;
+				cursor: pointer;
+			}
+			#password{
+				position: absolute;
+				width: 200px;
+				height: 20px;
+				background-color: white;
+				bottom:0;
+				margin-bottom: 200px;
+				left: 50%;
+				margin-left: -100px;
+				outline: none;
+				border: none;
+				background: none;
+				color: white;
+				border-bottom: 4px solid white;
+				visibility: hidden;
+				font-size: 16px;
+			}
+			#project_people{
+				position: absolute;
+				width: 280px;
+				height: 100%;
+				background-color: black;
+				top:0;
+				right:0;
+				visibility: hidden;
+				z-index: 10099;
+				box-shadow: 0px 0px 2px black;
+			}
+			 #map{ 
+				position:absolute;
+				top:0;
+				bottom:0; 
+				width:100%; 
+				left:50%;
+				margin-left: -50%;
+			}
+			#features{
+ 			 	position: relative;
+ 			 	top:90px;
+ 			 	margin: 0 ;
+ 			 	padding: 0 ;
+ 			 	list-style: none ;
+ 			 	line-height: 25px;
+ 			 	color: white;
+ 			 	font-family: Helvetica;
+ 			 }
+ 			 #features li{
+	 			width: 80%;
+	 			height: 25px;
+	 		    top: 0;
+	 			border: 1px solid white;
+	 			cursor: pointer;
+	 			text-align: center;
+	 			margin-top: 20px;
+	 			margin-left: auto;
+ 			 	margin-right: auto;
+ 			 	font-size: 14px;
+			}
+			#logo{
+				position: absolute;
+				height: 50px;
+				width: 100%;
+				top:0;
+				text-align: center;
+				color: white;
+				font-size: 20px;
+				margin-top: 20px;
+			}
+			#window{
+				position: fixed;
+				width: 40%;
+				height: 500px;
+				top:50%;
+				margin-top: -250px;
+				left: 50%;
+				margin-left: -20%;
+				background-color: white;
+				box-shadow: 0px 0px 1px black;
+				visibility: hidden;
+				z-index: 300;
+			}
+			#title_window{
+				position: absolute;
+				top:0;
+				width: 100%;
+				height: 30px;
+				background-color: #000000;
+			}
+			#add{
+				text-align: center;
+				margin-top: 50px;
+			}
+			input[type=text]{
+				width: 200px;
+				height: 20px;
+				background-color: white;
+				margin-left: auto;
+				margin-right: auto;
+				outline: none;
+				border: none;
+				background: none;
+				color: white;
+				border: 1px solid white;
+				margin-top: 10px;
+			}
+			#input{
+				width: 40px;
+				height: 20px;
+				background-color: white;
+				color: black;
+				text-align: center;
+				font-size: 15px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 15px;
+				cursor: pointer;
+			}			
+			#input:after{
+				content: "Add"
+			}
+			#infos{
+				position: absolute;
+				top:0;
+				margin-top: 80px;
+				width: 80%;
+				height: 100%;
+				left: 50%;
+				margin-left: -40%;
+			}
+			#infolist{
+ 			 	position: relative;
+ 			 	margin: 0 ;
+ 			 	padding: 0 ;
+ 			 	list-style: none ;
+ 			 	line-height: 25px;
+ 			 	color: white;
+ 			 	font-family: Helvetica
+ 			 }
+ 			 #infolist li{
+	 			width: 80%;
+	 			height: 25px;
+	 		    top: 0;
+	 			cursor: pointer;
+	 			text-align: center;
+	 			margin-top: 20px;
+	 			margin-left: auto;
+ 			 	margin-right: auto;
+			}
+			#back{
+				position: absolute;
+				height: 20px;
+				width: 70px;
+				text-align: center;
+				top:0;
+				margin-top:400px;
+				left: 50%;
+				margin-left: -35px;
+				border: 1px solid white;
+				cursor: pointer;
+				line-height: 20px;
+			}
+			#hearth{
+				-webkit-transition: all 0.25s;
+			    -moz-transition: all 0.25s;
+				-ms-transition: all 0.25s;
+				position: absolute;
+				width: 60px;
+				height: 60px;
+				border-radius: 80px;
+				border: 5px solid #03c1dd;
+				box-shadow: 0px 0px 2px black;
+				left: 50%;
+				margin-left: -35px;
+				top:0;
+				margin-top: 100px;
+			}
+			#talk_base{
+				position: absolute;
+				width: 80%;
+				height: 100px;
+				color: white;
+				font-size: 14px;
+				text-align: left;
+				border: 1px solid white;
+				bottom: 0;
+				margin-bottom: 25px;
+				left: 50%;
+				margin-left: -40%;
+				outline: none;
+				background: none;
+			}
+			#voice{
+				position: absolute;
+				width: 80%;
+				height: 100px;
+				left: 50%;
+				margin-left: -40%;
+				top:0;
+				margin-top: 200px; 
+				text-align: center;
+				color: white;
+				font-size: 14px;
+			}
+			#audio{
+				visibility: hidden;
+			}
+		</style>
+	</head>
+	<body onload="launchdelta();">
+		<div id="id_project"></div>
+		<div id="loader" onclick="decrypt()">0%</div>
+		<input type="password" id="password">
+		<div id="project_people">
+			<div id="logo">D E L T A</div>
+			<ul id="features">
+				<li onclick="start_database()">Start to talk</li>
+				<li onclick="update_database()">Update</li>
+				<li onclick="debug()">Debug D E L T A</li>
+			</ul>
+		</div>
+		<!-- start insert window -->
+		<div id="window">
+			<div id="title_window"></div>
+			<div id="msg"></div>
+		</div>
+		<!-- end insert window -->
+		<div id="audio">
+			<audio id="source">
+				<source id="mp3Source" type="audio/mp3"></source>
+  Your browser does not support HTML5 audio.</audio>
+		</div>
+	</body>
+</html>
